@@ -22,9 +22,9 @@ tasks <-
       "Final details",
       "Completed"
     ),
-    Levels = c(0, 10, 25, 50, 75, 90, 100)
+    Progress = c(0, 10, 25, 50, 75, 90, 100)
   )
-tasks$Position <- dnorm(tasks$Levels, mean = u, sd = sd)
+tasks$Position <- dnorm(tasks$Progress, mean = u, sd = sd)
 base <-
   data.frame(x = seq(0, 100, length = 100),
              y = dnorm(seq(0, 100, length = 100), mean = u, sd = sd))
@@ -75,10 +75,10 @@ ggplot(data = NULL, aes()) +
   geom_point(
     data = tasks,
     aes(
-      x = tasks$Levels,
+      x = tasks$Progress,
       y = tasks$Position,
-      color = tasks$Levels,
-      fill = tasks$Levels
+      color = tasks$Progress,
+      fill = tasks$Progress
     ),
     size = 10,
     show.legend = FALSE,
@@ -89,13 +89,13 @@ ggplot(data = NULL, aes()) +
   ) +
   #Add labels
   geom_label_repel(
-    data = tasks(),
+    data = tasks,
     aes(
-      x = tasks()$Progress,
-      y = tasks()$Position,
-      label = tasks()$Task,
-      color = tasks()$Progress,
-      fill = tasks()$Progress
+      x = tasks$Progress,
+      y = tasks$Position,
+      label = tasks$Task,
+      color = tasks$Progress,
+      fill = tasks$Progress
     ),
     show.legend = FALSE,
     force = 5,

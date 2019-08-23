@@ -9,6 +9,8 @@ shinyUI(fluidPage(
                  dataTableOutput('x1'),
                  width = 4),
     mainPanel(plotOutput("hill"),
-              includeMarkdown("README.md"))
+              hr(),
+              column(4, includeMarkdown("README.md")),
+              box(title = "Example", align = "center", img(src='example.png', align = "center", height = 300)))
   )
 ))
