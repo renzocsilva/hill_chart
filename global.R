@@ -10,6 +10,7 @@ library(RColorBrewer)
 #https://groups.google.com/forum/#!topic/shiny-discuss/FeqU0AoTpz0
 
 
+enableBookmarking(store = "url")
 
 
 ### Initial fixed parameters #TODO: consider taking shiny input here.

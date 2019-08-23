@@ -4,7 +4,10 @@ shinyUI(fluidPage(
   
   # Sidebar with tables for inputs
   sidebarLayout(
-    sidebarPanel(dataTableOutput('x1'), width = 3),
+    sidebarPanel(bookmarkButton(),
+                 hr(),
+                 dataTableOutput('x1'),
+                 width = 4),
     mainPanel(plotOutput("hill"))
   )
 ))
