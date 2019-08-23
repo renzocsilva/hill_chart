@@ -8,6 +8,7 @@ shinyUI(fluidPage(
                  hr(),
                  dataTableOutput('x1'),
                  width = 4),
-    mainPanel(plotOutput("hill"))
+    mainPanel(plotOutput("hill"),
+              includeMarkdown("README.md"))
   )
 ))

@@ -25,12 +25,12 @@ shinyServer(function(input, output) {
   
   # a sample data frame
   res <- data.frame(
-    Task = shinyInput(textInput, 40, 'v1_', value = "Add task here"),
+    Task = shinyInput(textInput, 40, 'v1_', value = ""),
     Progress = shinyInput(
       numericInput,
       40,
       'v2_',
-      value = 0,
+      value = 50,
       min = 0,
       max = 100,
       step = 1
