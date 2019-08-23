@@ -33,15 +33,12 @@ base <-
 ggplot(data = NULL, aes()) +
   
   #Cosmetics
-  scale_fill_gradient(
-    low = "salmon",
-    high = "lightblue",
-    space = "Lab",
-    na.value = "grey50",
-    guide = "colourbar",
-    aesthetics = "fill"
+  scale_fill_gradientn(
+    colors = c("salmon", "lightblue"),
+    aesthetics = "fill",
+    limits = c(0,100)
   ) +
-  scale_x_continuous(limits = c(-10, 110)) +
+  scale_x_continuous(limits = c(-20, 120)) +
   scale_y_continuous(limits = c(-max(base$y)*0.1, max(base$y * 1.2))) +
   theme_minimal() +
   theme(
@@ -92,24 +89,23 @@ ggplot(data = NULL, aes()) +
   ) +
   #Add labels
   geom_label_repel(
-    data = tasks,
+    data = tasks(),
     aes(
-      x = tasks$Levels,
-      y = tasks$Position,
-      label = tasks$Task,
-      color = tasks$Levels,
-      fill = tasks$Levels
+      x = tasks()$Progress,
+      y = tasks()$Position,
+      label = tasks()$Task,
+      color = tasks()$Progress,
+      fill = tasks()$Progress
     ),
     show.legend = FALSE,
-    force = 10,
-    direction = "y",
-    vjust = 0,
+    force = 5,
+    direction = "both",
+    vjust = 0.5,
     hjust = 0.5,
     size = 3,
-    box.padding = 2,
+    box.padding = 1,
     segment.color = "grey50",
-    segment.size = 0.2,
-    color = "black",
-    nudge_y = tasks$Position * 1,
-    ylim = c(tasks$Position, tasks$Position * 1.3)
+    segment.size = 0.5,
+    color = "black"
   )
+  

@@ -1,5 +1,6 @@
 
 
+
 shinyServer(function(input, output) {
   # create a character vector of shiny inputs
   shinyInput <- function(FUN, len, id, ...) {
@@ -23,17 +24,17 @@ shinyServer(function(input, output) {
   
   # a sample data frame
   res <- data.frame(
-    Task = shinyInput(textInput, 20, 'v1_', value = "Add task here"),
+    Task = shinyInput(textInput, 40, 'v1_', value = "Add task here"),
     Progress = shinyInput(
       numericInput,
-      20,
+      40,
       'v2_',
       value = 0,
       min = 0,
       max = 100,
       step = 1
     ),
-    Show = shinyInput(checkboxInput, 20, 'v3_', value = FALSE, width = 1),
+    Show = shinyInput(checkboxInput, 40, 'v3_', value = FALSE, width = 1),
     stringsAsFactors = FALSE
   )
   
@@ -55,35 +56,26 @@ shinyServer(function(input, output) {
   # take inputs and turn into usable data.frame
   tasks <- reactive({
     data.frame(
-      Task = shinyValue('v1_', 20),
-      Progress = shinyValue('v2_', 20),
-      Show = shinyValue('v3_', 20)
+      Task = shinyValue('v1_', 40),
+      Progress = shinyValue('v2_', 40),
+      Show = shinyValue('v3_', 40)
     ) %>%
       filter(Show == TRUE) %>%
       mutate(Position = dnorm(Progress, mean = u, sd = sd))
   })
-  
-  # show table used in plot
-  output$x3 <- renderTable({
-    tasks()
-  })
-  
   
   # get the hill
   output$hill <- renderPlot({
     ggplot(data = NULL, aes()) +
       
       #Cosmetics
-      scale_fill_gradient(
-        low = "salmon",
-        high = "lightblue",
-        space = "Lab",
-        na.value = "grey50",
-        guide = "colourbar",
-        aesthetics = "fill"
+      scale_fill_gradientn(
+        colors = c("salmon", "lightblue"),
+        aesthetics = "fill",
+        limits = c(0, 100)
       ) +
-      scale_x_continuous(limits = c(-10, 110)) +
-      scale_y_continuous(limits = c(-max(base$y)*0.1, max(base$y * 1.2))) +
+      scale_x_continuous(limits = c(-20, 120)) +
+      scale_y_continuous(limits = c(-max(base$y) * 0.1, max(base$y * 1.2))) +
       theme_minimal() +
       theme(
         axis.text.x = element_blank(),
@@ -121,8 +113,8 @@ shinyServer(function(input, output) {
         aes(
           x = tasks()$Progress,
           y = tasks()$Position,
-          color = tasks()$Levels,
-          fill = tasks()$Levels
+          color = tasks()$Progress,
+          fill = tasks()$Progress
         ),
         size = 10,
         show.legend = FALSE,
@@ -138,22 +130,19 @@ shinyServer(function(input, output) {
           x = tasks()$Progress,
           y = tasks()$Position,
           label = tasks()$Task,
-          color = tasks()$Levels,
-          fill = tasks()$Levels
+          color = tasks()$Progress,
+          fill = tasks()$Progress
         ),
         show.legend = FALSE,
-        force = 10,
-        direction = "y",
-        vjust = 0,
+        force = 5,
+        direction = "both",
+        vjust = 0.5,
         hjust = 0.5,
         size = 3,
-        box.padding = 2,
+        box.padding = 1,
         segment.color = "grey50",
-        segment.size = 0.2,
-        color = "black",
-        nudge_y = tasks()$Position * 1,
-        ylim = c(tasks()$Position, tasks()$Position * 1.3)
+        segment.size = 0.5,
+        color = "black"
       )
   })
       })
-
