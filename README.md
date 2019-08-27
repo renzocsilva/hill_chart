@@ -1,6 +1,6 @@
 ## Hill chart, R-Shiny app
 
-- Blog post with further comments on this project at [renzocsilva.ca](renzocsilva.ca) - **TBD**    
+- Blog post with further comments on this project at [renzocsilva.ca](https://renzocsilva.ca/posts/hill-charts-in-r/)    
 - Shiny App live at [renzocsilva.ca/hill](https://renzocsilva.ca/hill)  
 - Inspired by [BaseCamp](https://basecamp.com/features/hill-charts)  
 - Find the key supporting material used for this app development [here](https://shiny.rstudio.com/articles/bookmarking-state.html) and [here](https://groups.google.com/forum/#!topic/shiny-discuss/FeqU0AoTpz0).  
@@ -9,6 +9,6 @@
 ## How to use it
 - Well, it is pretty intuitive! :) 
 - **Note: 0 <= 'Progress' <= 100**  
-- Use the **boormark button** to retrive the app state based on your inputs.
+- Use the **bookmark button** to retrieve the app state based on your inputs.
 
 

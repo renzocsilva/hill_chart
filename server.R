@@ -117,7 +117,7 @@ shinyServer(function(input, output) {
           color = tasks()$Progress,
           fill = tasks()$Progress
         ),
-        size = 10,
+        size = 12,
         show.legend = FALSE,
         alpha = 0.7,
         shape = 21,
@@ -139,7 +139,7 @@ shinyServer(function(input, output) {
         direction = "both",
         vjust = 0.5,
         hjust = 0.5,
-        size = 3,
+        size = 4,
         box.padding = 1,
         segment.color = "grey50",
         segment.size = 0.5,
