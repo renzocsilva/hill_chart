@@ -1,5 +1,4 @@
 shinyUI(fluidPage(
-  #tags$head(includeScript("google-analytics.js")),
   # Application title
   titlePanel("Hill Chart in R"),
   
@@ -9,9 +8,19 @@ shinyUI(fluidPage(
                  hr(),
                  dataTableOutput('x1'),
                  width = 4),
-    mainPanel(plotOutput("hill"),
-              hr(),
-              column(4, includeMarkdown("README.md")),
-              box(title = "Example", align = "center", img(src='example.png', align = "center", height = 300)))
+    mainPanel(
+      plotOutput("hill"),
+      hr(),
+      column(4, includeMarkdown("./www/description.md")),
+      box(
+        title = "Example",
+        align = "center",
+        img(
+          src = 'example.png',
+          align = "center",
+          height = 300
+        )
+      )
+    )
   )
 ))

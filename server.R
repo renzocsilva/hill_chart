@@ -1,8 +1,4 @@
-
-
-
 shinyServer(function(input, output) {
-  
   # create a character vector of shiny inputs
   shinyInput <- function(FUN, len, id, ...) {
     inputs = character(len)
