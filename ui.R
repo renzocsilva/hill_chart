@@ -11,7 +11,7 @@ shinyUI(fluidPage(
     mainPanel(
       plotOutput("hill"),
       hr(),
-      column(4, includeMarkdown("./www/description.md")),
+      column(4, includeMarkdown("README.md")),
       box(
         title = "Example",
         align = "center",
