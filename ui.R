@@ -1,4 +1,5 @@
 shinyUI(fluidPage(
+  tags$head(includeScript("google-analytics.js")),
   # Application title
   titlePanel("Hill Chart in R"),
   
